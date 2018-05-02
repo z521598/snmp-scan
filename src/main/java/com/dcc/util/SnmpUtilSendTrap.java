@@ -1,4 +1,4 @@
-package com.dcc;
+package com.dcc.util;
 
 import org.snmp4j.CommunityTarget;
 import org.snmp4j.PDU;

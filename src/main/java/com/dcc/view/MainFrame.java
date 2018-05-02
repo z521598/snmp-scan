@@ -1,5 +1,7 @@
-package com.dcc;
+package com.dcc.view;
 
+
+import com.dcc.listener.ScanButtonListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,33 +11,36 @@ import java.awt.*;
  */
 public class MainFrame extends JFrame {
 
+    private JLabel ipLabel = new JLabel("ip:");
+    public static JTextField ipField = new JTextField("127.0.0.1",10);
+    private JPanel ipPanel = new JPanel();
+
+    private JButton startButton = new JButton("开始扫描");
     private JPanel commandPanel = new JPanel();
 
     private JPanel consolePanel = new JPanel();
-    public static JTextArea consoleTextArea = new JTextArea(25, 39);
+    public static JTextArea consoleTextArea = new JTextArea(35, 60);
 
-    private JPanel exitPanel = new JPanel();
-    private JButton exitButton = new JButton("退出");
     public static MainFrame mainFrame;
 
     public MainFrame() throws HeadlessException {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 500);
+        setSize(700, 700);
         setName("telnet管理中心");
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
 
         // 命令区域
-        commandPanel.setLayout(new GridLayout(3, 3));
-
-
+        ipPanel.add(ipLabel);
+        ipPanel.add(ipField);
+        commandPanel.add(ipPanel);
+        startButton.addActionListener(new ScanButtonListener());
+        commandPanel.add(startButton);
         add(commandPanel, BorderLayout.NORTH);
         // 控制台区域
         consolePanel.add(new JScrollPane(consoleTextArea), JFrame.CENTER_ALIGNMENT);
         add(consolePanel, BorderLayout.CENTER);
 
-        exitPanel.add(exitButton);
-        add(exitPanel, BorderLayout.SOUTH);
         setVisible(true);
     }
 

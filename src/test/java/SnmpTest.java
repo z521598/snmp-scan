@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dcc.SnmpData;
+import com.dcc.util.SnmpData;
 import org.junit.Test;
 
 public class SnmpTest {
